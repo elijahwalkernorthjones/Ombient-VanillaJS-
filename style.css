@@ -1,0 +1,271 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+#background-image {
+    background-image: url('/pngs/0001.jpg');
+    background-size: cover; /* This will ensure that the image covers the entire div */
+    background-position: center; /* This centers the background image */
+    height: 100vh; /* Adjust the height as needed */
+    width: 100%; /* Adjust the width as needed */
+    z-index: -10;
+}
+
+.centerContainer {
+    width: 60vw;
+    height: 90vh;
+    /* border: 1px solid black; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.chakraManContainer {
+        width: 40vw;
+        height: 85vh;
+        max-width: auto;
+        max-height: auto;
+        /* border: 2px solid rgb(82, 82, 82); */
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+}
+
+.chakraManContainer img {
+    position: absolute;
+    width: 39em;
+    height: 70em;
+    height: fit-content;
+    animation: hoverAnimation 6.3s ease-in-out infinite alternate;
+     
+}
+
+#chakraManShadow {
+    position: absolute;
+    z-index: -1;
+
+    animation: shadowAnimation 6.3s ease-in-out infinite alternate;
+}
+
+
+
+
+
+
+@keyframes hoverAnimation {
+    0% {
+        transform: translate(0, -17%);
+    }
+    48% {
+        transform: translate(0, -18.5%); /* Move up by 20px */
+    }
+    100% {
+        transform: translate(0, -17%);
+    }
+}
+
+@keyframes shadowAnimation {
+    0%, 100% {
+        transform: translate(-3%, 73%)
+    }
+    48% {
+        transform: translate(-3%, 74.5%)/* Decrease shadow height at the bottom */
+    }
+}
+
+
+
+
+
+
+.chakraContainer {
+    width: 10vw;
+    height: auto;
+    /* border: 2px solid rgb(234, 19, 19); */
+    position: relative;
+    display: flex; 
+    transform: translate(1.61%, -11%);
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;  
+}
+
+.chakras {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 50%;
+    background-color: rgb(67,117,105);
+    transition: all 0.4s;
+    position: relative;
+    z-index: 1;
+    background-color: rgba(0,0,0,1);
+    
+}
+.chakras:hover{
+    background-color: rgb(123, 169, 138);
+    cursor: pointer;
+}
+
+#chakra1 {
+    background-color: rgb(221, 178, 241);
+}
+#chakra1:hover {
+    background-color: rgb(233, 220, 243);
+}
+
+#chakra2 {
+    background-color: rgb(127, 30, 165);
+}
+#chakra2:hover {
+    background-color: rgb(145, 79, 172);
+}
+
+#chakra3 {
+    background-color: rgb(92, 104, 233)
+}
+#chakra3:hover {
+    background-color: rgb(102, 114, 242);
+}
+
+#chakra4 {
+    background-color: rgb(101, 169, 101);
+}
+#chakra4:hover {
+    background-color: rgb(165, 226, 165);
+}
+
+#chakra5 {
+    background-color: rgb(250, 252, 130);
+}
+#chakra5:hover {
+    background-color: rgb(249, 250, 183) ;
+}
+
+#chakra6 {
+    background-color: rgb(201, 131, 66);
+}
+#chakra6:hover {
+    background-color: rgb(246, 217, 167);
+}
+#chakra7 {
+    background-color: rgb(187, 66, 66);
+}
+#chakra7:hover {
+    background-color: rgb(252, 130, 130);
+}
+
+
+
+
+
+
+
+.infoContainer {
+    width: 26vw;
+    height: 89.7vh;
+    /* border: 2px solid rgb(47, 193, 47); */
+    position: absolute;
+    top: 4.87%;
+    left: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* Media query for mobile */
+@media screen and (max-width: 625px) {
+    .centerContainer {
+        width: 90vw;
+        height: 70vh;
+        transform: translate(-50%, -65%);
+    }
+
+    .chakraManContainer {
+        width: 65vw;
+        height: 62vh;
+    }
+   
+    .infoContainer {
+        width: 90vw;
+        height: 27.35vh;
+        transform: translate(3%, 235%);/* Hide infoContainer on smaller screens */
+    }
+    .chakraContainer {
+        transform: translate(4.1%, -11%);
+    }
+}
+
+
+
+
+
+.largeChakra {
+    animation: enlarge 0.3s linear;
+    z-index: 2;
+    transform: scale(2.9);
+  }
+  
+  @keyframes enlarge {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(2.9);
+    }
+  }
+
+ 
+
+
+/* CLOUD ANIMATIONS */
+
+.clouds-container {
+    position: absolute;
+    /* border: 3px solid blue; */
+    width: 100%;
+    height: 30%;
+    overflow: hidden;
+}
+
+.cloud1 {
+    position: absolute;
+    width: 10%; 
+    height: 90%;
+    object-fit: contain;
+    animation: scrollClouds1 150s linear infinite;
+}
+.cloud2 {
+    position: absolute;
+    width: 50%; 
+    height: 150%;
+    object-fit: contain;
+    animation: scrollClouds2 90s linear infinite;
+    transform: translate(100px, 0);
+}
+
+@keyframes scrollClouds1 {
+    from {
+            transform: translateX(1120%);
+    }
+    to {
+            transform: translateX(-110%);
+    }
+}
+@keyframes scrollClouds2 {
+    from {
+            transform: translateX(200%);
+    }
+    to {
+            transform: translateX(-110%);
+    }
+}
