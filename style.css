@@ -17,7 +17,7 @@ body {
     height: 90vh;
     /* border: 1px solid black; */
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -41,8 +41,7 @@ body {
 
 .chakraManContainer img {
     position: absolute;
-    width: 39em;
-    height: 70em;
+    width: 28em;
     height: fit-content;
     animation: hoverAnimation 6.3s ease-in-out infinite alternate;
      
@@ -87,12 +86,12 @@ body {
 
 
 .chakraContainer {
-    width: 10vw;
+    width: 11vw;
     height: auto;
     /* border: 2px solid rgb(234, 19, 19); */
     position: relative;
     display: flex; 
-    transform: translate(1.61%, -11%);
+    transform: translate(-4.7%, -25%);
     flex-direction: column;
     justify-content: space-between; 
     align-items: center;  
