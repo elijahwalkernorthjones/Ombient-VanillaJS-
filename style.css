@@ -41,10 +41,10 @@ body {
 
 .chakraManContainer img {
     position: absolute;
-    width: 28em;
-    height: fit-content;
-    animation: hoverAnimation 6.3s ease-in-out infinite alternate;
-     
+    width: 34vw;
+    max-width: 450px;
+    height: auto;
+    animation: hoverAnimation 6.3s ease-in-out infinite alternate;   
 }
 
 #chakraManShadow {
@@ -58,7 +58,7 @@ body {
 
 
 
-
+/* Chakraman Floating animation*/ 
 @keyframes hoverAnimation {
     0% {
         transform: translate(0, -17%);
@@ -71,6 +71,7 @@ body {
     }
 }
 
+/* Chakraman shadow animation */
 @keyframes shadowAnimation {
     0%, 100% {
         transform: translate(-3%, 73%)
@@ -86,29 +87,32 @@ body {
 
 
 .chakraContainer {
-    width: 11vw;
+    width: 12vw;
+    max-width: 150px; /* Set a maximum width */
     height: auto;
-    /* border: 2px solid rgb(234, 19, 19); */
     position: relative;
-    display: flex; 
-    transform: translate(-4.7%, -25%);
+    display: flex;
+    transform: translate(-3%, -25%);
     flex-direction: column;
-    justify-content: space-between; 
-    align-items: center;  
+    justify-content: space-between;
+    align-items: center;
 }
 
 .chakras {
-    width: 40px;
-    height: 40px;
-    margin: 10px;
+    width: 4.3vw;
+    transform: translate(-5.5%);
+    max-width: 40px;
+    height: 4.3vw;
+    max-height: 40px;
+    margin: .75vw;
     border-radius: 50%;
     background-color: rgb(67,117,105);
     transition: all 0.4s;
     position: relative;
     z-index: 1;
     background-color: rgba(0,0,0,1);
-    
 }
+
 .chakras:hover{
     background-color: rgb(123, 169, 138);
     cursor: pointer;
@@ -186,23 +190,74 @@ body {
     .centerContainer {
         width: 90vw;
         height: 70vh;
-        transform: translate(-50%, -65%);
     }
 
     .chakraManContainer {
-        width: 65vw;
-        height: 62vh;
+        width: 85vw;
+        min-width: 600px; /* Set a minimum width */
+        height: 76vh;
+        min-height: 600px; /* Set a minimum height */
     }
-   
-    .infoContainer {
-        width: 90vw;
-        height: 27.35vh;
-        transform: translate(3%, 235%);/* Hide infoContainer on smaller screens */
+    .chakraManContainer img {
+        position: absolute;
+        width: 64vw;
+        max-width: 450px;
+        height: auto;
+        animation: hoverAnimation 6.3s ease-in-out infinite alternate;   
     }
+
     .chakraContainer {
-        transform: translate(4.1%, -11%);
+        width: 15vw;
+        min-width: 100px; /* Set a minimum width */
+        transform: translate(0, -25%);
+    }
+
+    .chakras {
+        width: 5vw;
+        min-width: 30px; /* Set a minimum width */
+        transform: translate(-18%);
+        height: 5vw;
+        min-height: 30px; /* Set a minimum height */
+        margin: 1.6vw;
     }
 }
+
+/* Media query for ipads */
+@media screen and (max-width: 1105px) {
+    .centerContainer {
+        width: 75vw; /* Adjusted for iPad */
+        height: 80vh; /* Adjusted for iPad */
+    }
+
+    .chakraManContainer {
+        width: 70vw; /* Adjusted for iPad */
+        min-width: 450px; /* Adjusted for iPad */
+        height: 80vh; /* Adjusted for iPad */
+        min-height: 450px; /* Adjusted for iPad */
+    }
+
+    .chakraManContainer img {
+        width: 60vw; /* Adjusted for iPad */
+        max-width: 400px; /* Adjusted for iPad */
+    }
+
+    .chakraContainer {
+        width: 13vw; /* Adjusted for iPad */
+        min-width: 120px; /* Adjusted for iPad */
+        transform: translate(-3%, -25%); /* Adjusted for iPad */
+    }
+
+    .chakras {
+        width: 4.5vw; /* Adjusted for iPad */
+        min-width: 35px; /* Adjusted for iPad */
+        height: 4.5vw; /* Adjusted for iPad */
+        min-height: 35px; /* Adjusted for iPad */
+        margin: 1vw; /* Adjusted for iPad */
+        transform: translate(-5.5%); /* Adjusted for iPad */
+    }
+}
+
+
 
 
 
