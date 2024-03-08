@@ -7,7 +7,7 @@ body {
     background-image: url('/pngs/0001.jpg');
     background-size: cover; 
     background-position: center;
-    background-attachment: fixed;
+    
     background-size: cover, 100% 100%;
     height: 100vh; /* Adjust the height as needed */
     width: 100%; /* Adjust the width as needed */
@@ -189,6 +189,16 @@ body {
 
 /* Media query for mobile */
 @media screen and (max-width: 625px) {
+    #background-image {
+        background-size: cover; 
+        background-position: center;
+        
+        background-size: cover, 100% 100%;
+        height: 100vh; /* Adjust the height as needed */
+        width: 100%; /* Adjust the width as needed */
+        z-index: -10;
+    }
+    
     .centerContainer {
         width: 90vw;
         height: 70vh;
