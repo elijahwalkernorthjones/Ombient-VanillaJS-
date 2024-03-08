@@ -5,8 +5,9 @@ body {
 
 #background-image {
     background-image: url('/pngs/0001.jpg');
-    background-size: cover; /* This will ensure that the image covers the entire div */
-    background-position: center; /* This centers the background image */
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed;
     height: 100vh; /* Adjust the height as needed */
     width: 100%; /* Adjust the width as needed */
     z-index: -10;
