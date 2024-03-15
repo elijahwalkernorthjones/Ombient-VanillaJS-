@@ -6,7 +6,7 @@ html, body {
 }
 
 #background-image {
-    background-image: url('/pngs/0001.jpg');
+    background-image: url('/pngs/BGimg_V2.3.jpg');
     background-size: cover; 
     background-position: center;
     background-attachment: fixed;
@@ -50,12 +50,7 @@ html, body {
     animation: hoverAnimation 6.3s ease-in-out infinite alternate;   
 }
 
-#chakraManShadow {
-    position: absolute;
-    z-index: -1;
 
-    animation: shadowAnimation 6.3s ease-in-out infinite alternate;
-}
 
 
 
@@ -91,7 +86,7 @@ html, body {
 
 .chakraContainer {
     width: 12vw;
-    max-width: 150px; /* Set a maximum width */
+    max-width: 150px; 
     height: auto;
     position: relative;
     display: flex;
@@ -109,23 +104,24 @@ html, body {
     max-height: 40px;
     margin: .75vw;
     border-radius: 50%;
-    background-color: rgb(67,117,105);
+    /* background-color: rgb(67,117,105); */
     transition: all 0.4s;
     position: relative;
     z-index: 1;
-    background-color: rgba(0,0,0,1);
+    opacity: 1; 
 }
 
 .chakras:hover{
-    background-color: rgb(123, 169, 138);
+
     cursor: pointer;
 }
 
 #chakra1 {
-    background-color: rgb(221, 178, 241);
+    background-image: url('pngs/chakraIcons/fireChakraIcon.png');
+    /* background-color: aquamarine; */
 }
 #chakra1:hover {
-    background-color: rgb(233, 220, 243);
+opacity: 0.8;
 }
 
 #chakra2 {
@@ -169,19 +165,31 @@ html, body {
     background-color: rgb(252, 130, 130);
 }
 
-
-
+/* Chakra Enlarge Animation*/
+.largeChakra {
+    animation: enlarge 0.3s linear;
+    z-index: 2;
+    transform: scale(2.9);
+  }
+  @keyframes enlarge {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(2.9);
+    }
+  }
 
 
 
 
 .infoContainer {
-    width: 26vw;
-    height: 89.7vh;
-    /* border: 2px solid rgb(47, 193, 47); */
+    width: 89.7vw;
+    height: 25vh;
+    border: 2px solid rgb(47, 193, 47);
     position: absolute;
-    top: 4.87%;
-    left: 2%;
+    left: 4.87%; 
+    bottom: 2%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -195,7 +203,7 @@ html, body {
     }
     
     #background-image {
-        background-attachment: fixed;
+        /* background-attachment: fixed; */
         height: 100vh; /* Adjust the height as needed */
         width: 100%; /* Adjust the width as needed */
         z-index: -10;
@@ -204,6 +212,7 @@ html, body {
     .centerContainer {
         width: 90vw;
         height: 70vh;
+
     }
 
     .chakraManContainer {
@@ -277,35 +286,20 @@ html, body {
 
 
 
-.largeChakra {
-    animation: enlarge 0.3s linear;
-    z-index: 2;
-    transform: scale(2.9);
-  }
-  
-  @keyframes enlarge {
-    from {
-      transform: scale(1);
-    }
-    to {
-      transform: scale(2.9);
-    }
-  }
 
  
 
 
 /* CLOUD ANIMATIONS */
 
-.clouds-container {
+/* .clouds-container {
     position: absolute;
-    /* border: 3px solid blue; */
     width: 100%;
     height: 70%;
     overflow: hidden;
-}
+} */
 
-.cloud1 {
+/* .cloud1 {
     position: absolute;
     width: 10%; 
     height: auto;
@@ -319,9 +313,10 @@ html, body {
     object-fit: contain;
     animation: scrollClouds2 90s linear infinite;
     transform: translate(100px, 0);
-}
+}  */
 
-@keyframes scrollClouds1 {
+
+/* @keyframes scrollClouds1 {
     from {
             transform: translateX(320%);
     }
@@ -336,4 +331,4 @@ html, body {
     to {
             transform: translateX(-110%);
     }
-}
+}  */
