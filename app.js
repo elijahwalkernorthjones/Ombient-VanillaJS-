@@ -267,33 +267,37 @@ const dorianIntervals = [
 chakras.forEach((chakra) => {
   chakra.addEventListener('click', (e) => {
     e.preventDefault();
-    // console.log('chakra clicked:', chakra)
+
+    // Log when a chakra is clicked
+    console.log('Chakra clicked:', chakra.id);
 
     const isEnlarged = chakra.classList.contains('largeChakra');
-    // console.log('Is enlarged?', isEnlarged);
+    console.log('Is enlarged before click?', isEnlarged);
 
-    // Check if any chakra is currently enlarged
-    const enlargedChakra = document.querySelector('.largeChakra');
-    // console.log('Enlarged chakra:', enlargedChakra);
-
-    if (enlargedChakra) {
-      // console.log('Removing largeChakra class from another chakra:', enlargedChakra);
-      // If a chakra is already enlarged and it's not the one that was clicked, remove the "largeChakra" class and reset its transform
-      if (enlargedChakra !== chakra) {
-        enlargedChakra.classList.remove('largeChakra');
-      }
-    }
-
-    // Toggle the "largeChakra" class and transform of the clicked chakra
     if (isEnlarged) {
-      // console.log('Removing largeChakra class from the clicked chakra:', chakra);
       chakra.classList.remove('largeChakra');
+      chakra.style.transform = ''; // Reset transform if needed
+      console.log('Enlarged class removed and transform reset for:', chakra.id);
     } else {
-      // console.log('Adding largeChakra class to the clicked chakra:', chakra);
+      // Reset all chakras before enlarging the clicked one
+      resetChakras();
       chakra.classList.add('largeChakra');
+      // Directly set the transform to ensure it stays enlarged
+      chakra.style.transform = 'scale(2.9)';
+      console.log('Enlarged class added and transform set for:', chakra.id);
     }
   });
 });
+
+function resetChakras() {
+  chakras.forEach(chakra => {
+      chakra.classList.remove('largeChakra');
+      chakra.style.transform = ''; // Reset any inline style
+      // Log each chakra being reset
+      console.log('Resetting chakra:', chakra.id);
+  });
+}
+
 
 
 
@@ -387,7 +391,7 @@ function playScale(chakraType) {
 chakra1.addEventListener("click", async () => {
   await Tone.start();
   console.log('Audio context started');
-  playScale(fireChakra);
+  playScale(lightChakra);
 });
 
 

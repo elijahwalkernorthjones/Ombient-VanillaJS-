@@ -117,11 +117,10 @@ html, body {
 }
 
 #chakra1 {
-    background-image: url('pngs/chakraIcons/fireChakraIcon.png');
-    /* background-color: aquamarine; */
+    background-color: rgb(43, 35, 46);
 }
 #chakra1:hover {
-opacity: 0.8;
+    background-color: rgb(78, 67, 84);
 }
 
 #chakra2 {
@@ -146,10 +145,10 @@ opacity: 0.8;
 }
 
 #chakra5 {
-    background-color: rgb(250, 252, 130);
+    background-image: url('pngs/chakraIcons/waterChakraIcon.svg');
 }
 #chakra5:hover {
-    background-color: rgb(249, 250, 183) ;
+    opacity: 0.8;
 }
 
 #chakra6 {
@@ -169,7 +168,7 @@ opacity: 0.8;
 .largeChakra {
     animation: enlarge 0.3s linear;
     z-index: 2;
-    transform: scale(2.9);
+    /* transform: scale(2.9); */
   }
   @keyframes enlarge {
     from {
