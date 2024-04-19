@@ -185,7 +185,7 @@ html, body {
 .infoContainer {
     width: 89.7vw;
     height: 25vh;
-    border: 2px solid rgb(47, 193, 47);
+    /* border: 2px solid rgb(47, 193, 47); */
     position: absolute;
     left: 4.87%; 
     bottom: 2%;

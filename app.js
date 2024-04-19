@@ -1,8 +1,31 @@
 const chakras = document.querySelectorAll('.chakras');
 
-const playBTN = document.getElementById("btn")
-// Tone.js instantiation
-const synth = new Tone.Synth().toDestination();
+// Create a compressor to control dynamics
+const compressor = new Tone.Compressor({
+  threshold: -24, // Threshold in dB
+  ratio: 6,       // Compression ratio
+  attack: 0.005,  // Attack time in seconds
+  release: 0.25   // Release time in seconds
+}).toDestination();
+
+// Create a volume control and set to -12 dB for more reduction
+const volume = new Tone.Volume(-12);
+volume.connect(compressor); // Connect volume to compressor
+
+// Tone.js instantiation with a slower attack for smoother onset
+const synth = new Tone.PolySynth(Tone.Synth, {
+envelope: {
+  attack: 2,   // Slow attack time of 2 seconds
+  decay: 0.5,  // Decay time of 0.5 seconds
+  sustain: 0.8, // Sustain level of 0.8
+  release: 1.5  // Release time of 1.5 seconds
+}
+});
+synth.connect(volume); // Connect synth to volume control
+
+
+
+
 
 //All Notes Audible To The Human Ear - 115 
 const allNotes = [     
@@ -267,7 +290,7 @@ const dorianIntervals = [
 chakras.forEach((chakra) => {
   chakra.addEventListener('click', (e) => {
     e.preventDefault();
-
+    console.clear();
     // Log when a chakra is clicked
     console.log('Chakra clicked:', chakra.id);
 
@@ -297,12 +320,6 @@ function resetChakras() {
       console.log('Resetting chakra:', chakra.id);
   });
 }
-
-
-
-
-
-
 
 
 
@@ -369,30 +386,61 @@ console.log("Cosmic Chakra:", cosmicChakra);
 
 
 
+// Example Note Arrays for Each Chakra (previously defined)
+const chakraNotes = {
+  'chakra7': earthChakra,
+  'chakra6': fireChakra,
+  'chakra5': waterChakra,
+  'chakra4': windChakra,
+  'chakra3': soundChakra,
+  'chakra2': lightChakra,
+  'chakra1': cosmicChakra
+};
 
+// State object to keep track of which chakras are playing
+const chakraStates = {};
 
-
-// Function to play the Dorian scale using Tone.js
-function playScale(chakraType) {
-    // Loop through the dorianFreq array
-    for (let i = 0; i < chakraType.length; i++) {
-        // Look up the note name from the frequency
-        let noteName = frequencyToNoteMap[chakraType[i]];
-
-        // Trigger the note with Tone.js after a delay based on the index
-        // (to play the notes sequentially)
-        synth.triggerAttackRelease(noteName, '8n', Tone.now() + i * 1.5);
-    }
-}
-
-
-
-
-chakra1.addEventListener("click", async () => {
-  await Tone.start();
-  console.log('Audio context started');
-  playScale(lightChakra);
+// Initialize chakra states
+chakras.forEach(chakra => {
+  chakraStates[chakra.id] = { playing: false, note: chakraNotes[chakra.id][0] };
 });
+
+// Add click event listeners to each chakra
+chakras.forEach(chakra => {
+  chakra.addEventListener('click', async () => {
+      await Tone.start(); // Ensure the audio context is ready
+      const state = chakraStates[chakra.id];
+
+      if (state.playing) {
+          // If the chakra is currently playing, stop the note
+          synth.triggerRelease(frequencyToNoteMap[state.note]);
+          state.playing = false;
+          console.log('Stopped playing:', chakra.id);
+      } else {
+          // Not playing, so start playing
+          const note = frequencyToNoteMap[state.note];
+          synth.triggerAttack(note);
+          state.playing = true;
+          console.log('Started playing:', chakra.id, note);
+
+          // Stop the note after 1 minute automatically
+          setTimeout(() => {
+              if (state.playing) {
+                  synth.triggerRelease(note);
+                  state.playing = false;
+                  console.log('Automatically stopped playing after 1 minute:', chakra.id);
+              }
+          }, 30000); // 30 seconds
+      }
+  });
+});
+
+
+
+
+
+
+
 
 
 
