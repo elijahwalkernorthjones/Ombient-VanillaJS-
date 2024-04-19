@@ -1,27 +1,43 @@
 const chakras = document.querySelectorAll('.chakras');
 
-// Create a compressor to control dynamics
-const compressor = new Tone.Compressor({
-  threshold: -24, // Threshold in dB
-  ratio: 6,       // Compression ratio
-  attack: 0.005,  // Attack time in seconds
-  release: 0.25   // Release time in seconds
-}).toDestination();
-
-// Create a volume control and set to -12 dB for more reduction
-const volume = new Tone.Volume(-12);
-volume.connect(compressor); // Connect volume to compressor
+// import * as Tone from 'tone';
 
 // Tone.js instantiation with a slower attack for smoother onset
 const synth = new Tone.PolySynth(Tone.Synth, {
-envelope: {
-  attack: 2,   // Slow attack time of 2 seconds
-  decay: 0.5,  // Decay time of 0.5 seconds
-  sustain: 0.8, // Sustain level of 0.8
-  release: 1.5  // Release time of 1.5 seconds
-}
+  envelope: {
+    attack: 5,   // Increased attack time for a softer onset
+    decay: 2.5,  // Sufficient decay
+    sustain: 0.8,// Sustain level
+    release: 1.5 // Release time
+  }
 });
-synth.connect(volume); // Connect synth to volume control
+
+// Create reverb effect with more reasonable settings
+const reverb = new Tone.Reverb({
+  decay: 4,     // Shorter decay time
+  wet: 0.3      // Lower wet mix for a blend of dry and wet signals
+});
+
+// Connect synth to reverb
+synth.connect(reverb);
+
+// Create a volume control and set to -12 dB for headroom management
+const volume = new Tone.Volume(-12);
+
+// Connect reverb to volume control
+reverb.connect(volume);
+
+// Create a compressor to control dynamics at the end of the chain
+const compressor = new Tone.Compressor({
+  threshold: -20, // Threshold in dB
+  ratio: 6,       // Compression ratio
+  attack: 0.005,  // Attack time in seconds
+  release: 0.25   // Release time in seconds
+});
+
+// Connect volume to compressor, then to destination
+volume.connect(compressor);
+compressor.toDestination();
 
 
 
@@ -367,13 +383,13 @@ console.log(dorianFreq.length)
 // console.log(dorianIndices) // -- the intervals throughout the new Dorian array
 
 // Assign portions of dorianFreq to chakra arrays
-let earthChakra = dorianFreq.slice(0, 10);
-let fireChakra = dorianFreq.slice(10, 20);
-let waterChakra = dorianFreq.slice(20, 30);
-let windChakra = dorianFreq.slice(30, 40);
-let soundChakra = dorianFreq.slice(40, 50);
-let lightChakra = dorianFreq.slice(50, 60);
-let cosmicChakra = dorianFreq.slice(60); // This will get the remaining notes
+let earthChakra = dorianFreq.slice(0, 20);
+let fireChakra = dorianFreq.slice(20, 25);
+let waterChakra = dorianFreq.slice(25, 30);
+let windChakra = dorianFreq.slice(30, 35);
+let soundChakra = dorianFreq.slice(35, 40);
+let lightChakra = dorianFreq.slice(45, 55);
+let cosmicChakra = dorianFreq.slice(55); // This will get the remaining notes
 
 // Log the chakra arrays to verify
 console.log("Earth Chakra:", earthChakra);
